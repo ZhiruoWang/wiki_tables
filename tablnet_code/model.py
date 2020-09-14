@@ -33,7 +33,7 @@ from keras import metrics
 # %%
 from os import listdir
 from os.path import isfile, join
-from sklearn.metrics import confusion_matrix as cm
+
 
 import pandas as pd
 from pandas import DataFrame
@@ -47,34 +47,7 @@ from table import WikiTable
 import sys
 sys.setrecursionlimit(100000)
 
-# %%
-'''Compute P/R/F1 from the confusion matrix. '''
-def evaluation_metrics_report(mat, labels_, method_, epochs=10):
-    num_classes = len(mat)
-    scores = dict()
-    avg_p = []
-    avg_r = []
-    avg_f1 = []
-    for i in range(0, num_classes):
-        p = mat[i,i] / float(sum(mat[:,i]))
-        r = mat[i,i] / float(sum(mat[i,:]))
-        f1 = 2 * (p * r) / (p + r)
-        scores[i] = (p, r, f1)
-        avg_p.append(p)
-        avg_r.append(r)
-        avg_f1.append(f1)
-    outstr = 'Evaluation results for ' + method_ + ' Epochs: ' + str(epochs) + '\n'
-    for key in scores:
-        label = labels_[key]
-        val_1 = scores[key][0]
-        val_2 = scores[key][1]
-        val_3 = scores[key][2]
-        outstr += ('%s\tP=%.3f\tR=%.3f\tF1=%.3f\n' % (label, val_1, val_2, val_3))
-    avg_p_score = sum(avg_p) / len(avg_p)
-    avg_r_score = sum(avg_r) / len(avg_r)
-    avg_f1_score = sum(avg_f1) / len(avg_f1)
-    outstr += 'AVG\tAvg-P=%.3f\tAvg-R=%.3f\tAvg-F1=%.3f\n' % (avg_p_score, avg_r_score, avg_f1_score)
-    return outstr
+
 
 # %% LSTM column-by-column with attention model
 
