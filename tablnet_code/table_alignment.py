@@ -123,7 +123,7 @@ if tables is not None:
     loader.load_alignment_pairs()
 else:
     loader.load_alignment_pairs()
-    tables = loader.table
+    tables = loader.tables
 print('Loaded the table data with %d entries' % (len(loader.tables)))
 
 print("start construct the evaluation data...")
