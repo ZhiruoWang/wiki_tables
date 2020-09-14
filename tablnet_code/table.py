@@ -3,8 +3,10 @@ import re
 import numpy as np
 import sys
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+from importlib import reload
+if sys.version[0] == '2':
+    reload(sys)
+    sys.setdefaultencoding('utf8')
 
 
 class WikiTable:
