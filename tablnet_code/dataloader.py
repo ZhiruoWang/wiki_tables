@@ -114,6 +114,7 @@ class DataLoader(object):
             table_pair_dict['col_values'] = []
             table_pair_dict['col_subject'] = []
 
+            print("load-eval-data: ", table_pair)
             table_a = self.table_rep[table_pair[0]]
             table_b = self.table_rep[table_pair[1]]
 
@@ -168,7 +169,7 @@ class DataLoader(object):
                 col_names_rep[col_idx] = []
 
                 # generate the word embedding for the column name
-                col_names_rep[col_idx] = self.column_title_to_idx(column, self.vocab_w2v)
+                col_names_rep[col_idx] = self.column_title_tb_idx(column, self.vocab_w2v)
 
                 # generate the column representation based on the entities
                 col_values = table.column_meta_data[column]
